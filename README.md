@@ -11,33 +11,45 @@ index.html
 body{
   margin:0;
   font-family:Arial, sans-serif;
-  background:#eef2f5;
+  background: linear-gradient(270deg, #0f2027, #2c5364, #ffffff);
+  background-size: 600% 600%;
+  animation: rgbMove 10s ease infinite;
+}
+
+/* RGB LED ANIMATION */
+@keyframes rgbMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
 /* HEADER */
 .header{
-  background:linear-gradient(135deg,#2193b0,#6dd5ed);
+  background: rgba(0,0,0,0.5);
   color:white;
   padding:18px;
   text-align:center;
   font-size:22px;
   font-weight:bold;
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 /* SEARCH */
-.search-box{
-  padding:10px;
-  text-align:center;
-}
-
 .search-box input{
   width:92%;
   max-width:500px;
   padding:12px;
   border-radius:12px;
-  border:1px solid #ccc;
+  border:none;
   outline:none;
-  font-size:14px;
+  background: rgba(255,255,255,0.15);
+  color:white;
+  backdrop-filter: blur(10px);
+}
+
+.search-box input::placeholder{
+  color:#ddd;
 }
 
 /* CATEGORIES */
@@ -50,72 +62,57 @@ body{
 
 .cat{
   padding:8px 14px;
-  background:white;
+  background: rgba(255,255,255,0.15);
+  color:white;
   border-radius:20px;
   cursor:pointer;
   white-space:nowrap;
-  box-shadow:0 2px 6px rgba(0,0,0,0.08);
-  transition:0.2s;
+  backdrop-filter: blur(10px);
+  transition:0.3s;
 }
 
 .cat.active{
-  background:#2193b0;
-  color:white;
+  background:#00c6ff;
+  color:black;
 }
 
 /* ADS */
-.container{
-  padding:10px;
-}
-
 .ad{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:white;
+  background: rgba(0,0,0,0.5);
   margin:12px auto;
-  border-radius:12px;
+  border-radius:15px;
   padding:12px;
   max-width:700px;
-  box-shadow:0 3px 12px rgba(0,0,0,0.08);
-  transition:0.2s;
+  box-shadow:0 0 20px rgba(0,198,255,0.3);
+  color:white;
+  backdrop-filter: blur(10px);
+  transition:0.3s;
 }
 
 .ad:hover{
-  transform:scale(1.01);
-}
-
-.ad-info{
-  flex:1;
-}
-
-h3{
-  margin:0;
-  font-size:16px;
+  transform:scale(1.02);
+  box-shadow:0 0 25px rgba(0,198,255,0.6);
 }
 
 .price{
-  color:green;
+  color:#00ffcc;
   font-weight:bold;
-  margin-top:5px;
 }
 
-/* BUTTON */
 .btn{
   display:inline-block;
   margin-top:8px;
   padding:8px 12px;
-  background:#25D366;
-  color:white;
+  background:#00c6ff;
+  color:black;
   text-decoration:none;
   border-radius:8px;
   font-size:13px;
   font-weight:bold;
-}
-
-/* HIDE */
-.hide{
-  display:none;
+  box-shadow:0 0 10px rgba(0,198,255,0.5);
 }
 </style>
 </head>
