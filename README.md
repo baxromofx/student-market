@@ -4,192 +4,122 @@ index.html
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-Students Market  powered by Baxromov Shohrux</title>
-  
+<title>Student Market</title>
+
 <style>
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    min-height:100vh;
-    background:linear-gradient(
-        135deg,
-        #00111f,
-        #003366,
-        #0055aa,
-        #ffffff
-    );
-    background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
+  margin:0;
+  font-family:Arial, sans-serif;
+  background: linear-gradient(270deg, #0f2027, #2c5364, #ffffff);
+  background-size: 600% 600%;
+  animation: rgbMove 10s ease infinite;
 }
 
-@keyframes bgMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+/* RGB LED ANIMATION */
+@keyframes rgbMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
 /* HEADER */
 .header{
-    margin:15px;
-    padding:18px;
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-    color:white;
-
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:20px;
-
-    box-shadow:
-    0 0 20px rgba(0,170,255,0.4);
+  background: rgba(0,0,0,0.5);
+  color:white;
+  padding:18px;
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
 /* SEARCH */
-.search-box{
-    text-align:center;
-    padding:10px;
-}
-
 .search-box input{
-    width:90%;
-    max-width:500px;
-
-    padding:14px;
-
-    border:none;
-    outline:none;
-
-    border-radius:15px;
-
-    color:white;
-
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(15px);
-
-    box-shadow:
-    0 0 15px rgba(0,170,255,0.4);
+  width:92%;
+  max-width:500px;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  outline:none;
+  background: rgba(255,255,255,0.15);
+  color:white;
+  backdrop-filter: blur(10px);
 }
 
 .search-box input::placeholder{
-    color:#ddd;
+  color:#ddd;
 }
 
-/* CATEGORY */
+/* CATEGORIES */
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:10px;
+}
+
 .cat{
-    color:white;
-
-    background:rgba(255,255,255,0.12);
-
-    border-radius:20px;
-    padding:10px 16px;
-
-    transition:0.3s;
-
-    border:1px solid rgba(255,255,255,0.2);
-}
-
-.cat:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-    0 0 15px rgba(0,170,255,0.7);
+  padding:8px 14px;
+  background: rgba(255,255,255,0.15);
+  color:white;
+  border-radius:20px;
+  cursor:pointer;
+  white-space:nowrap;
+  backdrop-filter: blur(10px);
+  transition:0.3s;
 }
 
 .cat.active{
-    background:#00cfff;
-    color:black;
+  background:#00c6ff;
+  color:black;
 }
 
-/* PRODUCT */
+/* ADS */
 .ad{
-    background:rgba(255,255,255,0.12);
-
-    backdrop-filter:blur(15px);
-
-    color:white;
-
-    border-radius:20px;
-
-    margin:15px auto;
-    padding:15px;
-
-    max-width:700px;
-
-    border:1px solid rgba(255,255,255,0.15);
-
-    box-shadow:
-    0 0 20px rgba(0,170,255,0.25);
-
-    transition:0.3s;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: rgba(0,0,0,0.5);
+  margin:12px auto;
+  border-radius:15px;
+  padding:12px;
+  max-width:700px;
+  box-shadow:0 0 20px rgba(0,198,255,0.3);
+  color:white;
+  backdrop-filter: blur(10px);
+  transition:0.3s;
 }
 
 .ad:hover{
-    transform:translateY(-5px);
-
-    box-shadow:
-    0 0 25px rgba(0,170,255,0.8);
+  transform:scale(1.02);
+  box-shadow:0 0 25px rgba(0,198,255,0.6);
 }
 
 .price{
-    color:#00ffcc;
-    font-size:18px;
-    font-weight:bold;
-
-    text-shadow:
-    0 0 10px #00ffcc;
+  color:#00ffcc;
+  font-weight:bold;
 }
 
-/* BUTTON */
 .btn{
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:10px 15px;
-
-    text-decoration:none;
-
-    color:white;
-
-    border-radius:12px;
-
-    background:linear-gradient(
-    45deg,
-    #00cfff,
-    #0077ff
-    );
-
-    box-shadow:
-    0 0 15px rgba(0,170,255,0.7);
-
-    transition:0.3s;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-
-    box-shadow:
-    0 0 25px rgba(0,170,255,1);
-}
-  .ad{
-    border-left:5px solid #00cfff;
+  display:inline-block;
+  margin-top:8px;
+  padding:8px 12px;
+  background:#00c6ff;
+  color:black;
+  text-decoration:none;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:bold;
+  box-shadow:0 0 10px rgba(0,198,255,0.5);
 }
 </style>
 </head>
-<h3>📱 Телефон</h3>
 
-<h3>🎧 Наушники</h3>
-
-<h3>📖 Атлас</h3>
-
-<h3>🧸 Мишка</h3>
 <body>
 
-<div class="header">🛒 </div>
-Students Market  powered by Baxromov Shohrux
+<div class="header">🛒 Student Market</div>
+
 <!-- SEARCH -->
 <div class="search-box">
   <input type="text" id="search" placeholder="Поиск товаров...">
