@@ -118,7 +118,7 @@ body{
 
 <body>
 
-<div class="header">🛒 Student Market</div>
+<div class="header">🛒 Student Market powered by BAXROMOV SHOHRUX</div>
 
 <!-- SEARCH -->
 <div class="search-box">
