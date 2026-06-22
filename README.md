@@ -109,38 +109,30 @@ body{
 </head>
 
 <body>
-
   <div class="header">
     🛒 Student Market
   </div>
-
   <div class="container">
-
     <div class="card">
       <h3>Рюкзак</h3>
       <p class="price">120 000 сум</p>
       <button class="btn">Купить</button>
     </div>
-
     <div class="card">
       <h3>Наушники</h3>
       <p class="price">80 000 сум</p>
       <button class="btn">Купить</button>
     </div>
-
     <div class="card">
       <h3>Книга</h3>
       <p class="price">30 000 сум</p>
       <button class="btn">Купить</button>
     </div>
-    
     <div class="card">
       <h3>Клавиатура</h3>
       <p class="price">150 000 сум</p>
       <button class="btn">Купить</button>
     </div>
-
   </div>
-
 </body>
 </html>
