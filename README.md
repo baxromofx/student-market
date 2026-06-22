@@ -6,8 +6,20 @@ index.html
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Market</title>
-
+<a href="https://t.me/baxromofx" class="tg-btn">💬 Написать в Telegram</a>
   <style>
+    .tg-btn{
+  display:block;
+  margin:15px auto;
+  padding:10px;
+  background:#25D366;
+  color:white;
+  text-align:center;
+  border-radius:10px;
+  text-decoration:none;
+  width:80%;
+  font-weight:bold;
+}
     body {
       font-family: Arial, sans-serif;
       margin: 0;
