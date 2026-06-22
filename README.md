@@ -68,22 +68,17 @@ body{
 
 .ad{
   display:flex;
+  justify-content:space-between;
+  align-items:center;
   background:white;
   margin:10px auto;
   border-radius:10px;
-  overflow:hidden;
+  padding:10px;
   max-width:700px;
   box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
-.ad img{
-  width:120px;
-  height:120px;
-  object-fit:cover;
-}
-
 .ad-info{
-  padding:10px;
   flex:1;
 }
 
@@ -92,6 +87,7 @@ body{
   font-weight:bold;
 }
 
+/* BUTTONS */
 .btn{
   display:inline-block;
   margin-top:8px;
@@ -101,11 +97,69 @@ body{
   text-decoration:none;
   border-radius:6px;
   font-size:13px;
+  border:none;
+  cursor:pointer;
 }
 
-/* HIDE */
-.hide{
+.heart{
+  font-size:20px;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+/* CHAT */
+.chat-box{
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  width:280px;
+  background:white;
+  border-radius:10px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.2);
   display:none;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+.chat-header{
+  background:#23a6d5;
+  color:white;
+  padding:10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.chat-messages{
+  height:180px;
+  overflow-y:auto;
+  padding:10px;
+  font-size:14px;
+}
+
+.chat-input{
+  display:flex;
+  border-top:1px solid #ddd;
+}
+
+.chat-input input{
+  flex:1;
+  padding:8px;
+  border:none;
+  outline:none;
+}
+
+.chat-input button{
+  background:#25D366;
+  color:white;
+  border:none;
+  padding:8px;
+}
+
+.msg{
+  background:#f1f1f1;
+  padding:5px;
+  margin:5px 0;
+  border-radius:5px;
 }
 </style>
 </head>
@@ -130,63 +184,116 @@ body{
 <!-- ADS -->
 <div class="container">
 
-  <div class="ad tech">
-    <img src="https://via.placeholder.com/150">
+  <div class="ad tech" data-name="телефон">
     <div class="ad-info">
-      <h3>Наушники</h3>
-      <p class="price">80 000 сум</p>
-      <a class="btn" href="https://t.me/baxromofx">Написать</a>
+      <h3>Телефон</h3>
+      <p class="price">1 200 000 сум</p>
+      <button class="btn" onclick="openChat('Телефон')">Чат</button>
+      <span class="heart" onclick="fav(this)">♡</span>
     </div>
   </div>
 
-  <div class="ad study">
-    <img src="https://via.placeholder.com/150">
+  <div class="ad study" data-name="ручка">
     <div class="ad-info">
-      <h3>Книга</h3>
-      <p class="price">30 000 сум</p>
-      <a class="btn" href="https://t.me/baxromofx">Написать</a>
+      <h3>Ручка</h3>
+      <p class="price">5 000 сум</p>
+      <button class="btn" onclick="openChat('Ручка')">Чат</button>
+      <span class="heart" onclick="fav(this)">♡</span>
     </div>
   </div>
 
-  <div class="ad tech">
-    <img src="https://<img width="941/>
-/>
-/150">
+  <div class="ad study" data-name="атлас">
     <div class="ad-info">
-      <h3>Клавиатура</h3>
-      <p class="price">150 000 сум</p>
-      <a class="btn" href="https://t.me/baxromofx">Написать</a>
+      <h3>Атлас</h3>
+      <p class="price">25 000 сум</p>
+      <button class="btn" onclick="openChat('Атлас')">Чат</button>
+      <span class="heart" onclick="fav(this)">♡</span>
+    </div>
+  </div>
+
+  <div class="ad other" data-name="мишка">
+    <div class="ad-info">
+      <h3>Мишка</h3>
+      <p class="price">45 000 сум</p>
+      <button class="btn" onclick="openChat('Мишка')">Чат</button>
+      <span class="heart" onclick="fav(this)">♡</span>
     </div>
   </div>
 
 </div>
 
+<!-- CHAT -->
+<div id="chatBox" class="chat-box">
+  <div class="chat-header">
+    <span id="chatTitle">Чат</span>
+    <button onclick="closeChat()">✖️</button>
+  </div>
+  <div id="chatMessages" class="chat-messages"></div>
+
+  <div class="chat-input">
+    <input id="msgInput" placeholder="Сообщение...">
+    <button onclick="sendMsg()">Отправить</button>
+  </div>
+</div>
+
 <script>
+let currentChat="";
+
 // SEARCH
 document.getElementById("search").addEventListener("input", function(){
-  let value = this.value.toLowerCase();
-  let ads = document.querySelectorAll(".ad");
-
-  ads.forEach(ad=>{
-    let text = ad.innerText.toLowerCase();
-    ad.style.display = text.includes(value) ? "flex" : "none";
+  let val=this.value.toLowerCase();
+  document.querySelectorAll(".ad").forEach(ad=>{
+    ad.style.display = ad.innerText.toLowerCase().includes(val) ? "flex" : "none";
   });
 });
 
-// CATEGORY FILTER
+// CATEGORY
 function filterCat(cat){
-  let ads = document.querySelectorAll(".ad");
-  let buttons = document.querySelectorAll(".cat");
+  document.querySelectorAll(".ad").forEach(ad=>{
+    ad.style.display = (cat==="all" || ad.classList.contains(cat)) ? "flex":"none";
+  });
+}
 
-  buttons.forEach(b=>b.classList.remove("active"));
-  event.target.classList.add("active");
+// FAVORITE
+function fav(el){
+  el.textContent = el.textContent==="♡"?"❤️":"♡";
+}
 
-  ads.forEach(ad=>{
-    if(cat === "all"){
-      ad.style.display="flex";
-    } else {
-      ad.style.display = ad.classList.contains(cat) ? "flex" : "none";
-    }
+// CHAT
+function openChat(name){
+  currentChat=name;
+  document.getElementById("chatTitle").innerText="Чат: "+name;
+  document.getElementById("chatBox").style.display="flex";
+  loadMsg();
+}
+
+function closeChat(){
+  document.getElementById("chatBox").style.display="none";
+}
+
+function sendMsg(){
+  let input=document.getElementById("msgInput");
+  if(input.value==="")return;
+
+  let key="chat_"+currentChat;
+  let arr=JSON.parse(localStorage.getItem(key)||"[]");
+
+  arr.push(input.value);
+  localStorage.setItem(key,JSON.stringify(arr));
+
+  input.value="";
+  loadMsg();
+}
+
+function loadMsg(){
+  let key="chat_"+currentChat;
+  let arr=JSON.parse(localStorage.getItem(key)||"[]");
+
+  let box=document.getElementById("chatMessages");
+  box.innerHTML="";
+
+  arr.forEach(m=>{
+    box.innerHTML+=<div class="msg">${m}</div>;
   });
 }
 </script>
