@@ -18,11 +18,7 @@ index.html
     border-radius:10px;
     font-weight:bold;
     transition:0.3s;
-}
-.tg-button:hover{
-    background:#0077b5;
-    transform:scale(1.05);
-}  
+} 
 body{
   margin:0;
   font-family: Arial, sans-serif;
