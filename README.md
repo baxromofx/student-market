@@ -8,77 +8,79 @@ index.html
   <title>Student Market</title>
 <a href="https://t.me/baxromofx" class="tg-btn">💬 Написать в Telegram</a>
   <style>
-    .tg-btn{
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#74ebd5,#ACB6E5);
+}
+
+/* шапка */
+.header{
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  padding:20px;
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+  color:#fff;
+}
+
+/* кнопка Telegram */
+.tg-btn{
   display:block;
   margin:15px auto;
-  padding:10px;
-  background:#25D366;
+  padding:12px;
+  background:#0088cc;
   color:white;
   text-align:center;
-  border-radius:10px;
+  border-radius:12px;
   text-decoration:none;
   width:80%;
   font-weight:bold;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f2f4f8;
-    }
 
-    .header {
-      background: #2196F3;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-    }
+/* контейнер товаров */
+.container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;
+  padding:15px;
+}
 
-    .container {
-      padding: 15px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-    }
+/* карточка товара */
+.card{
+  background:white;
+  border-radius:15px;
+  padding:10px;
+  text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+.card:hover{
+  transform:translateY(-5px);
+}
 
-    .card h3 {
-      margin: 10px 0 5px;
-    }
+.card img{
+  width:100%;
+  border-radius:10px;
+}
 
-    .price {
-      color: green;
-      font-weight: bold;
-    }
+.price{
+  color:green;
+  font-weight:bold;
+}
 
-    .btn {
-      margin-top: 10px;
-      padding: 8px;
-      background: #2196F3;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .btn:hover {
-      background: #1976D2;
-    }
-
-    @media (max-width: 600px) {
-      .header {
-        font-size: 18px;
-      }
-    }
+.btn{
+  margin-top:10px;
+  padding:8px;
+  background:#2196F3;
+  color:white;
+  border:none;
+  border-radius:10px;
+  width:100%;
+}
   </style>
 </head>
 
