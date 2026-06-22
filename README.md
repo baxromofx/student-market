@@ -149,7 +149,8 @@ body{
   </div>
 
   <div class="ad tech">
-    <img src="https://via.placeholder.com/150">
+    <img src="https://<img width="547" height="365" alt="image" src="https://github.com/user-attachments/assets/e5ff1863-1214-40e5-9c94-733c4d3caaa7" />
+/150">
     <div class="ad-info">
       <h3>Клавиатура</h3>
       <p class="price">150 000 сум</p>
