@@ -3,129 +3,191 @@ index.html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Market</title>
-<a href="https://t.me/baxromofx" class="tg-btn">💬 Написать в Telegram</a>
-  <style>
-  .tg-button{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 20px;
-    background:#0088cc;
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-    transition:0.3s;
-} 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Market</title>
+
+<style>
 body{
   margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#74ebd5,#ACB6E5);
-}.tg-button{
-    display:inline-block;
-    margin-top:20px;
-    padding:12px 20px;
-    background:#0088cc;
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-    font-weight:bold;
-    transition:0.3s;
+  font-family:Arial, sans-serif;
+  background:#f2f4f5;
 }
-.tg-button:hover{
-    background:#0077b5;
-    transform:scale(1.05);
-}
-/* шапка */
+
+/* HEADER */
 .header{
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px);
-  padding:20px;
-  text-align:center;
-  font-size:24px;
-  font-weight:bold;
-  color:#fff;
-}
-/* кнопка Telegram */
-.tg-btn{
-  display:block;
-  margin:15px auto;
-  padding:12px;
-  background:#0088cc;
+  background:#23a6d5;
   color:white;
-  text-align:center;
-  border-radius:12px;
-  text-decoration:none;
-  width:80%;
-  font-weight:bold;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-/* контейнер товаров */
-.container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:15px;
   padding:15px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
 }
-/* карточка товара */
-.card{
-  background:white;
-  border-radius:15px;
+
+/* SEARCH */
+.search-box{
   padding:10px;
   text-align:center;
-  box-shadow:0 5px 15px rgba(0,0,0,0.15);
-  transition:0.3s;
 }
-.card:hover{
-  transform:translateY(-5px);
-}
-.card img{
-  width:100%;
+
+.search-box input{
+  width:90%;
+  max-width:500px;
+  padding:10px;
   border-radius:10px;
+  border:1px solid #ccc;
+  outline:none;
 }
+
+/* CATEGORIES */
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:10px;
+}
+
+.cat{
+  padding:8px 12px;
+  background:white;
+  border-radius:20px;
+  white-space:nowrap;
+  cursor:pointer;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cat.active{
+  background:#23a6d5;
+  color:white;
+}
+
+/* ADS */
+.container{
+  padding:10px;
+}
+
+.ad{
+  display:flex;
+  background:white;
+  margin:10px auto;
+  border-radius:10px;
+  overflow:hidden;
+  max-width:700px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.ad img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+}
+
+.ad-info{
+  padding:10px;
+  flex:1;
+}
+
 .price{
   color:green;
   font-weight:bold;
 }
+
 .btn{
-  margin-top:10px;
-  padding:8px;
-  background:#2196F3;
+  display:inline-block;
+  margin-top:8px;
+  padding:6px 10px;
+  background:#25D366;
   color:white;
-  border:none;
-  border-radius:10px;
-  width:100%;
+  text-decoration:none;
+  border-radius:6px;
+  font-size:13px;
 }
-  </style>
+
+/* HIDE */
+.hide{
+  display:none;
+}
+</style>
 </head>
 
 <body>
-  <div class="header">
-    🛒 Student Market
-  </div>
-  <div class="container">
-    <div class="card">
-      <h3>Рюкзак</h3>
-      <p class="price">120 000 сум</p>
-      <button class="btn">Купить</button>
-    </div>
-    <div class="card">
+
+<div class="header">🛒 Student Market (OLX style)</div>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <input type="text" id="search" placeholder="Поиск товаров...">
+</div>
+
+<!-- CATEGORIES -->
+<div class="categories">
+  <div class="cat active" onclick="filterCat('all')">Все</div>
+  <div class="cat" onclick="filterCat('tech')">Техника</div>
+  <div class="cat" onclick="filterCat('study')">Учёба</div>
+  <div class="cat" onclick="filterCat('other')">Другое</div>
+</div>
+
+<!-- ADS -->
+<div class="container">
+
+  <div class="ad tech">
+    <img src="https://via.placeholder.com/150">
+    <div class="ad-info">
       <h3>Наушники</h3>
       <p class="price">80 000 сум</p>
-      <button class="btn">Купить</button>
-    </div>
-    <div class="card">
-      <h3>Книга</h3>
-      <p class="price">30 000 сум</p>
-      <button class="btn">Купить</button>
-    </div>
-    <div class="card">
-      <h3>Клавиатура</h3>
-      <p class="price">150 000 сум</p>
-      <button class="btn">Купить</button>
+      <a class="btn" href="https://t.me/baxromofx">Написать</a>
     </div>
   </div>
+
+  <div class="ad study">
+    <img src="https://via.placeholder.com/150">
+    <div class="ad-info">
+      <h3>Книга</h3>
+      <p class="price">30 000 сум</p>
+      <a class="btn" href="https://t.me/baxromofx">Написать</a>
+    </div>
+  </div>
+
+  <div class="ad tech">
+    <img src="https://via.placeholder.com/150">
+    <div class="ad-info">
+      <h3>Клавиатура</h3>
+      <p class="price">150 000 сум</p>
+      <a class="btn" href="https://t.me/baxromofx">Написать</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// SEARCH
+document.getElementById("search").addEventListener("input", function(){
+  let value = this.value.toLowerCase();
+  let ads = document.querySelectorAll(".ad");
+
+  ads.forEach(ad=>{
+    let text = ad.innerText.toLowerCase();
+    ad.style.display = text.includes(value) ? "flex" : "none";
+  });
+});
+
+// CATEGORY FILTER
+function filterCat(cat){
+  let ads = document.querySelectorAll(".ad");
+  let buttons = document.querySelectorAll(".cat");
+
+  buttons.forEach(b=>b.classList.remove("active"));
+  event.target.classList.add("active");
+
+  ads.forEach(ad=>{
+    if(cat === "all"){
+      ad.style.display="flex";
+    } else {
+      ad.style.display = ad.classList.contains(cat) ? "flex" : "none";
+    }
+  });
+}
+</script>
+
 </body>
 </html>
