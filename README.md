@@ -1,8 +1,5 @@
 # student-market
 index.html
-<a href="https://t.me/baxromofx" class="tg-button" target="_blank">
-  Написать в Telegram
-</a>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
